@@ -1,3 +1,4 @@
+
 const params = new URLSearchParams(location.search);
 const name = params.get("name");
 const url = params.get("url");
@@ -16,7 +17,7 @@ if (logo && logo.startsWith("http")) {
 }
 
 if (!url || !url.includes("drive.google.com/file/")) {
-  showError("Некорректная ссылка. Убедитесь, что это ссылка на Google Drive.");
+  showError("Некорректная ссылка. Убедитесь, что это Google Drive.");
   return;
 }
 
@@ -36,13 +37,12 @@ iframe.src = iframeUrl;
 iframe.frameBorder = "0";
 iframe.allowFullscreen = true;
 
-// Покажем iframe и скроем "Загрузка..." после его загрузки
 iframe.onload = () => {
   titleEl.textContent = name || "Фильм";
 };
 
 iframe.onerror = () => {
-  showError("Не удалось загрузить видео. Проверьте доступность файла.");
+  showError("Не удалось загрузить видео. Проверьте доступность.");
 };
 
 iframeBox.appendChild(iframe);
