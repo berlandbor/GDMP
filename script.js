@@ -27,36 +27,31 @@ function handleFile(e) {
   if (!file) return;
   const reader = new FileReader();
   reader.onload = () => {
-    parseDrivePlaylist(reader.result);
+    parsePlaylist(reader.result);
   };
   reader.readAsText(file);
   sidebar.classList.remove("visible");
 }
 
-function parseDrivePlaylist(text) {
+function parsePlaylist(text) {
   const lines = text.split(/\r?\n/);
   const parsed = [];
 
   for (const line of lines) {
     if (!line.trim()) continue;
-
     const parts = line.split("|").map(p => p.trim());
 
     if (parts.length >= 2) {
       const name = parts[0] || "Без названия";
       const link = parts[1];
-      const poster = parts[2] || "https://via.placeholder.com/140x80?text=Фильм";
+      const poster = parts[2] || "https://via.placeholder.com/140x80?text=Видео";
 
-      const match = link.match(/drive\.google\.com\/file\/d\/([^/]+)\//);
-      if (match) {
-        const id = match[1];
-        parsed.push({
-          name,
-          url: `https://drive.google.com/uc?export=download&id=${id}`,
-          logo: poster,
-          group: "Google Drive"
-        });
-      }
+      parsed.push({
+        name,
+        url: link,
+        logo: poster,
+        group: "Google Drive"
+      });
     }
   }
 
@@ -90,5 +85,5 @@ function openPlayer(station, index) {
   const encodedName = encodeURIComponent(station.name);
   const encodedUrl = encodeURIComponent(station.url);
   const encodedLogo = encodeURIComponent(station.logo || "");
-  window.open(`player.html?name=${encodedName}&url=${encodedUrl}&logo=${encodedLogo}&index=${index}`, "_blank");
+  window.open(`player.html?name=${encodedName}&url=${encodedUrl}&logo=${encodedLogo}`, "_blank");
 }
