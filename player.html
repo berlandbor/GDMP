@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Плеер Google Drive</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Плеер Google Диск</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <img id="logo" src="" alt="logo" hidden />
-    <h1 id="title">Загрузка...</h1>
-    <div id="iframeBox"></div>
-    <div class="error-msg" id="error"></div>
-    <button class="back-button" onclick="location.href='index.html'">🔙 Назад</button>
+  <div class="player-container">
+    <iframe id="videoFrame" allowfullscreen></iframe>
   </div>
+
   <script src="player.js"></script>
 </body>
 </html>
