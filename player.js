@@ -1,4 +1,3 @@
-
 const params = new URLSearchParams(location.search);
 const name = params.get("name");
 const url = params.get("url");
