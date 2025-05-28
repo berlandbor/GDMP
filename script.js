@@ -46,12 +46,7 @@ function parsePlaylist(text) {
       const link = parts[1];
       const poster = parts[2] || "https://via.placeholder.com/140x80?text=Видео";
 
-      parsed.push({
-        name,
-        url: link,
-        logo: poster,
-        group: "Google Drive"
-      });
+      parsed.push({ name, url: link, logo: poster });
     }
   }
 
@@ -65,7 +60,7 @@ function renderGrid() {
   stations.forEach((station, i) => {
     const tile = document.createElement("div");
     tile.className = "tile";
-    tile.onclick = () => openPlayer(station, i);
+    tile.onclick = () => openPlayer(station);
 
     const img = document.createElement("img");
     img.src = station.logo;
@@ -80,8 +75,7 @@ function renderGrid() {
   });
 }
 
-function openPlayer(station, index) {
-  localStorage.setItem("last_index", index);
+function openPlayer(station) {
   const encodedName = encodeURIComponent(station.name);
   const encodedUrl = encodeURIComponent(station.url);
   const encodedLogo = encodeURIComponent(station.logo || "");
