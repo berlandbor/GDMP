@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Drive MediaPlayer</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Плейлист Google Диск</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <button id="menuToggle">☰</button>
+  <header>
+    <h1>🎞 Выберите видео</h1>
+    <input type="file" id="playlistFile" accept=".json" />
+  </header>
 
-  <aside id="sidebar" class="hidden">
-    <h2>Меню</h2>
-    <input type="file" id="fileInput" accept=".txt">
-  </aside>
-
-  <main>
-    <h1>Google Drive MediaPlayer</h1>
-    <h2>Загрузите плейлист (название | ссылка | постер)</h2>
-    <div id="playlistGrid" class="grid"></div>
-  </main>
+  <div class="playlist-grid" id="playlist"></div>
 
   <script src="script.js"></script>
 </body>
