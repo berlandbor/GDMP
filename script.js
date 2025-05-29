@@ -20,14 +20,17 @@ playlistInput.addEventListener("change", (e) => {
 function renderPlaylist(items) {
   playlistContainer.innerHTML = "";
   items.forEach(item => {
+    const { title, id, poster } = item;
+    const imageSrc = poster || `https://drive.google.com/thumbnail?id=${id}`;
+
     const tile = document.createElement("div");
     tile.className = "tile";
     tile.innerHTML = `
-      <img src="https://drive.google.com/thumbnail?id=${item.id}" />
-      <div class="tile-title">${item.title}</div>
+      <img src="${imageSrc}" />
+      <div class="tile-title">${title}</div>
     `;
     tile.addEventListener("click", () => {
-      window.open(`player.html?id=${item.id}`, "_blank");
+      window.open(`player.html?id=${id}`, "_blank");
     });
     playlistContainer.appendChild(tile);
   });
